@@ -1,24 +1,35 @@
 import { useReducer } from "react";
 import { AuthContext } from "./AuhContext";
 import { authReducer } from "./authReducer";
+import { types } from "../types/types";
 
 const inicialState = {
     logged:false,
+    user: null, // Inicialmente el usuario no está logueado
 }
 
 export const AuthProvider = ({ children }) => {
     const [authState, dispatch] = useReducer(authReducer, inicialState);
-  
-    const login = (user) => {
-      dispatch({ type: "LOGIN", payload: user });
+    
+    //se cambio el codigo de este archivo
+
+    const login = (name = '') => {
+        const action = {
+            type:types.login,
+            payload:{
+                id:'abs',
+                name:name
+            }
+        }
+        dispatch(action);
     };
-  
-    const logout = () => {
-      dispatch({ type: "LOGOUT" });
-    };
-  
+
+ 
     return (
-      <AuthContext.Provider value={{ authState, login, logout }}>
+      <AuthContext.Provider value={{ 
+        ...authState,
+        login:login,
+         }}>
         {children}
       </AuthContext.Provider>
     );
