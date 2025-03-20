@@ -3,10 +3,11 @@ import { AuthContext } from "../auth/context/AuhContext";
 import { useContext } from "react";
 
 export const Navbar = () => {
-  const { user } = useContext(AuthContext);
+  const { user ,logout } = useContext(AuthContext);
   const navigate = useNavigate();
   const onLogout = () => {
-    navigate("/login");
+    logout();
+    navigate("/login",{ replace: true });
   };
   return (
     <nav className="navbar navbar-expand-sm navbar-dark bg-dark p-2">
@@ -50,7 +51,10 @@ export const Navbar = () => {
           <span className="nav-item nav-link text-primary">
             {user ? user.name : "Guest"}
           </span>
-          <button className="nav-item nav-link btn" onClick={onLogout}>
+          <button
+          
+          className="nav-item nav-link btn" 
+          onClick={onLogout}>
             Logout
           </button>
         </ul>
