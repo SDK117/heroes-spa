@@ -7,27 +7,28 @@ import { PublicRoute } from "./PublicRoute";
 export const AppRouter = () => {
   return (
     <Routes>
-      
+    
       //rutas públicas
-      <Route path="/login" element={
-          <PublicRoute>
-            <LoginPage />
-          </PublicRoute>
-        }
-      />
-      {/* <Route path="/login" element={<LoginPage />} /> */}
+    <Route path="/login" element={
+        <PublicRoute>
+          <LoginPage />
+        </PublicRoute>
+      }
+    />
+    {/* <Route path="/login" element={<LoginPage />} /> */}
 
 
       //rutas privadas
-      <Route
-        path="/*"
-        element={
-          <PrivateRoute>
-            <HeroesRoutes />
-          </PrivateRoute>
-        }
-      />
-      {/* <Route path="/*" element={<HeroesRoutes />} /> */}
-    </Routes>
+    <Route
+      path="/*"
+      element={
+        <PrivateRoute>
+          <HeroesRoutes />
+        </PrivateRoute>
+      }
+    />
+{/* <Route path="/*" element={<HeroesRoutes />} /> */}
+  </Routes>
   );
 };
+      
